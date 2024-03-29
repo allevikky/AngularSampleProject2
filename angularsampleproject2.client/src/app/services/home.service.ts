@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class HomeService {
   constructor(private _http: HttpClient) {}
   getProducts(): Observable<Product[]> {
-    return this._http.get<Product[]>('http://localhost:5284/Home/GetProducts').pipe(
+    return this._http.get<Product[]>('/Home/GetProducts').pipe(
+    //return this._http.get<Product[]>('http://localhost:5284/Home/GetProducts').pipe(
       map((result) => {
         return result;
       })
