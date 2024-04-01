@@ -17,12 +17,9 @@ app.UseCors(builder => builder
      .AllowAnyMethod()
      .AllowAnyHeader());
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
 app.UseAuthorization();
 

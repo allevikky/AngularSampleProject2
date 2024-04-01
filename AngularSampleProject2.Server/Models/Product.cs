@@ -1,4 +1,4 @@
-﻿namespace AngularSampleProject2.Server
+﻿namespace AngularSampleProject2.Server.Models
 {
     public class Product
     {
