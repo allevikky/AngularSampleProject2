@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { OverlayComponent } from '../overlay/overlay.component';
 import { HomeService } from '../services/home.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +18,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('overlaycontent', { static: true })
   overlayContent: OverlayComponent | undefined;
 
-  constructor(private _homeService: HomeService) {}
+  constructor(
+    private _homeService: HomeService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
     this.productsSubs$ = this._homeService.getProducts().subscribe({
       next: (data) => {
         this.products = data;
+        this.spinner.hide();
       },
       error: (error: HttpErrorResponse) => {
         console.log('Error retriving products.', error);
